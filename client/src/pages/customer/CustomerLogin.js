@@ -3,41 +3,38 @@ import {AuthContext} from '../../context/auth'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
-
-export default function DriverLogin() {
-  const [username, setUsername] = useState('')
+export default function CustomerLogin() {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
-  const {loginUser, setErrMessage} = useContext (AuthContext)
-
+  const {loginUser, setErrMessage} = useContext(AuthContext)
+  
   const handleSubmit = e => {
     e.preventDefault()
+    const reqBody = {email, password}
 
-    const requestBody = {username, password}
-
-    axios.post('/login/driver', requestBody)
+    axios.post('/login/customer', reqBody)
         .then(res => {
           const token = res.data.authToken
-
+          
           loginUser(token)
-          navigate('/driver')
+          navigate('/customer')
         })
-        .catch( err => {
-          setErrMessage(err.response.data.message)
-        })
+        .catch(err => setErrMessage(err.response.data.message))
   }
 
   return (
-    <div className='driver-login'>
+    <div>
+      <div className='driver-login'>
       <form onSubmit={handleSubmit}>
         <label>
-          Username
+          Email
           <input 
             type="text" 
-            placeholder='Username' 
-            value={username} 
-            onChange={e => setUsername(e.target.value)}
+            placeholder='Email' 
+            value={email} 
+            onChange={e => setEmail(e.target.value)}
             />
         </label>
         <label>
@@ -51,6 +48,7 @@ export default function DriverLogin() {
         </label>
         <button>Login</button>
       </form>
+    </div>
     </div>
   )
 }

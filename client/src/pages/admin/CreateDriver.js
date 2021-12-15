@@ -20,7 +20,7 @@ export default function CreateDriver() {
 
     const storedToken = localStorage.getItem('authToken')
 
-    axios.post('/admin/driver', requestBody,{headers: {Authorization: `Bearer ${storedToken}`}})
+    axios.post('/admin/driver', requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
         .then(response => navigate('/admin/driver'))
         .catch(err =>{
           setErrMessage(err.response.data.message)

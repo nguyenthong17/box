@@ -9,7 +9,7 @@ export default function AdminLogIn() {
   
   
   const navigate = useNavigate()
-  const {loginUser, setErrMessage} = useContext(AuthContext)
+  const {isLoggedIn,loginUser, setErrMessage} = useContext(AuthContext)
 
   const handleUsername = e => setUsername(e.target.value)
   const handlePassword = e => setPassword(e.target.value)

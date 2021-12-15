@@ -22,6 +22,9 @@ require("./config")(app);
 // const allRoutes = require("./routes");
 // app.use("/api", allRoutes);
 
+const cusSignup = require('./routes/customerSignup')
+app.use('/signup', cusSignup)
+
 const authRoutes = require("./routes/authentication/auth");
 app.use("/auth", authRoutes);
 
