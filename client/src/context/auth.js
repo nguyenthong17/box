@@ -9,6 +9,7 @@ function AuthProviderWrapper (props) {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errMessage, setErrMessage] = useState(null)
+  const [headers, setHeaders] = useState(null)
 
   const loginUser = (token) => {
     localStorage.setItem('authToken', token)
@@ -23,7 +24,7 @@ function AuthProviderWrapper (props) {
 
   const verifyToken = () => {
     const storedToken = localStorage.getItem('authToken')
-
+    setHeaders({Authorization: `Bearer ${storedToken}`})
     if (storedToken) {
       axios.get('/auth/verify', {headers: {Authorization: `Bearer ${storedToken}`}})
           .then ( response => {

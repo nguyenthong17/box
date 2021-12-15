@@ -35,7 +35,14 @@ function App() {
           }
         />
 
-        <Route path="/admin/login" element={<AdminLogIn />} />
+        <Route 
+          path="/admin/login" 
+          element={
+            <UserRedirect>              
+              <AdminLogIn />
+            </UserRedirect>
+          }
+        />
         <Route
           path="/admin"
           element={
@@ -53,22 +60,44 @@ function App() {
           }
         />
 
-        <Route path="/driver/login" element={<DriverLogin />} />
+        <Route 
+          path="/driver/login" 
+          element={
+            <UserRedirect>
+              <DriverLogin />
+            </UserRedirect>
+          }
+
+        />
         <Route 
           path='/driver'
           element={
-            <DriverRoute redirectTo={'/driver/login'}>
+            <DriverRoute redirectTo={'/'}>
               <DriverHomepage/>
             </DriverRoute>
           }
         />
 
-        <Route path='/customer/signup' element={<CustomerSignup />}/>
-        <Route path='/customer/login' element={<CustomerLogin />}/>
+        <Route 
+          path='/customer/signup' 
+          element={
+            <UserRedirect>
+              <CustomerSignup />
+            </UserRedirect>
+          }            
+          />
+        <Route 
+          path='/customer/login' 
+          element={
+            <UserRedirect>
+              <CustomerLogin />          
+            </UserRedirect>
+          }
+          />
         <Route 
           path='/customer' 
           element={
-           <CustomerRoute redirectTo={'/customer/login'}>
+           <CustomerRoute redirectTo={'/'}>
              <CustomerHomepage />
            </CustomerRoute> 
           }
