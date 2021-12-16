@@ -8,7 +8,7 @@ const orderSchema = new Schema(
       ref: 'Customer'
     },
     driverId: {
-      type: Schema.Types. ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Driver'
     },
     delivered: {type: Boolean, default: false},

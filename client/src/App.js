@@ -13,6 +13,7 @@ import UserRedirect from "./components/protectRoutes/UserRedirect";
 import AdminLogIn from "./pages/admin/AdminLogin";
 import CreateDriver from "./pages/admin/CreateDriver";
 import AdminHomepage from "./pages/admin/AdminHomepage";
+import AdminShowOrder from "./pages/admin/AdminShowOrder";
 
 import DriverLogin from "./pages/driver/DriverLogin";
 import DriverHomepage from "../src/pages/driver/DriverHomepage";
@@ -64,6 +65,14 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route 
+          path='/admin/orders'
+          element={
+            <AdminRoute redirectTo={"/"}>
+              <AdminShowOrder />
+            </AdminRoute>
+          }
+        /> 
 
         <Route
           path="/driver/login"
@@ -125,7 +134,7 @@ function App() {
         <Route
           path="/customer/orders"
           element={
-            <CustomerRoute>
+            <CustomerRoute redirectTo={"/"}>
               <ShowOrder />
             </CustomerRoute>
           }

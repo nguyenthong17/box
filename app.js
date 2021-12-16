@@ -33,7 +33,7 @@ const adminRoutes = require("./routes/admin");
 app.use("/admin", isAuthenticated, adminRoutes);
 
 const customerRoute = require('./routes/customer')
-app.use('/customer', customerRoute) //need to protect the link after development❗❗❗❗❗
+app.use('/customer', isAuthenticated, customerRoute) //need to protect the link after development❗❗❗❗❗
 
 const path = require('path');
 app.use(express.static(path.join(__dirname, "/client/build")));

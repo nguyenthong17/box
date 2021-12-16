@@ -63,6 +63,15 @@ label {
   /* justify-content: center; */
 
 }
+
+table{
+  margin: auto;
+  width: 600px;
+}
+
+table td {
+  width: 25%;
+}
 /* * {
   border: 1px solid black;
 } */

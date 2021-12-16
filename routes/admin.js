@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const Driver = require("../models/Driver");
+const Order = require('../models/Order')
 const {
   isEmpty,
   is8Chars,
@@ -59,7 +60,26 @@ router.post("/driver", (req, res, next) => {
     .catch((err) => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-//get all driver
-router.get("/driver", (req, res, next) => {});
+router.get("/orders", (req, res, next) => {
+  Order.find()
+      .then(ordersFromDB => res.status(200).json({ordersFromDB}))
+      .catch(err => res.status(500).json({message: 'Internal Server Error'}))
+});
+
+router.get('/drivers',(req, res, next) => {
+  Driver.find()
+  .then(driversFromDB => res.status(200).json({driversFromDB}))
+  .catch(err => res.status(500).json({message: 'Internal Server Error'}))
+});
+
+router.put('/:orderId',(req, res, next) => {
+  const {orderId} = req.params
+  const {driverId} = req.body
+  Order.findByIdAndUpdate(orderId, {driverId}, {new:true})
+      .then(updatedOrder => res.status(200).json({message: 'Order updated'}))
+      .catch(err => res.status(500).json({message: 'Internal Server Error'}))
+});
+
+
 
 module.exports = router;

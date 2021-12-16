@@ -10,7 +10,7 @@ export default function ShowOrder() {
 
   const storedToken = localStorage.getItem("authToken");
 
-  const orderArr = result.map((order) => {
+  const orderArr = [...result].map((order) => {
     const { _id, content } = order;
     let status = "";
     if (!order?.driverId) {
@@ -20,18 +20,16 @@ export default function ShowOrder() {
     }
 
     return (
-    
-        <tr key={_id}>
-          <td>{_id.slice(-5)}</td>
-          <td>{content}</td>
-          <td>{status}</td>
-          {status === "Processing" && (
-            <td>
-              <Link to={`/customer/order/${_id}`}>Edit</Link>
-            </td>
-          )}
-        </tr>
-      
+      <tr key={_id}>
+        <td>{_id.slice(-5)}</td>
+        <td>{content}</td>
+        <td>{status}</td>
+        {status === "Processing" && (
+          <td>
+            <Link to={`/customer/order/${_id}`}>Edit</Link>
+          </td>
+        )}
+      </tr>
     );
   });
 
@@ -43,8 +41,9 @@ export default function ShowOrder() {
       .then((response) => setResult(response.data));
   }, []);
 
+  if (result.length === 0) return <></>;
   return (
-    <div className='center-div'>
+    <div className="center-div">
       <table className="customer-order">
         <thead>
           <tr>
