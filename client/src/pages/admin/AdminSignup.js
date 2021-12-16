@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function AdminSignup() {
-  const [email,setEmail] = useState('')
+  const [username,setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -13,7 +13,7 @@ export default function AdminSignup() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const requestBody = {email, password, firstName, lastName}
+    const requestBody = {username, password, firstName, lastName}
     axios.post('/signup/admin', requestBody)
         .then( res => navigate('/admin/login'))
         .catch(err => console.log(err.response.data.message))
@@ -23,8 +23,8 @@ export default function AdminSignup() {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Email
-          <input type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder='Email'/>
+          username
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder='username'/>
         </label>
         <label>
           Password
