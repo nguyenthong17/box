@@ -6,8 +6,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 export default function NavbarAdmin() {
   return (
-    <Nav>
-      <NavDropdown title='Driver'>
+    <Nav className='navbar-link'>
+      <NavDropdown title='Driver' className='navbar-link'>
         <NavDropdown.Item>
           <Link  to='/admin/driver/create'>Create driver</Link>
         </NavDropdown.Item>

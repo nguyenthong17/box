@@ -26,7 +26,7 @@ export default function CustomerLogin() {
 
   return (
     <div>
-      <div className='driver-login'>
+      <div className='signup center-div'>
       <form onSubmit={handleSubmit}>
         <label>
           Email

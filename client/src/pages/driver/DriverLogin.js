@@ -29,7 +29,7 @@ export default function DriverLogin() {
   }
 
   return (
-    <div className='driver-login'>
+    <div className='signup center-div'>
       <form onSubmit={handleSubmit}>
         <label>
           Username

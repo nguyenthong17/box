@@ -2,3 +2,14 @@
   width: 80vw;
   position: static;
 }
+
+.navbar-link {
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+/* .navbar-link :hover{
+  background-color: rgb(46, 97, 240);
+  color: rgb(255, 255, 255);
+} */

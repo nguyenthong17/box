@@ -16,7 +16,11 @@ export default function ShowOrder() {
     if (!order?.driverId) {
       status = "Processing";
     } else {
-      status = "On the way";
+      if (!order.delivered) {
+        status = "On the way";
+      } else {
+        status = "Delivered";
+      }
     }
 
     return (

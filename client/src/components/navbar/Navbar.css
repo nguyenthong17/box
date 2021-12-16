@@ -16,10 +16,11 @@ width: 50px;
   text-decoration: none;
   display: block;
   padding: 5px 10px;
+  border-radius: 5px 15px
 }
 
 .navbar-link a:not(.logo):hover{
-  background-color: blue;
-  color: white;
+  background-color: rgb(46, 97, 240);
+  color: rgb(255, 255, 255);
 }
 

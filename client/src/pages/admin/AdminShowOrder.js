@@ -7,7 +7,7 @@ export default function AdminShowOrder() {
 
   const [orderFromDB, setOrderFromDB] = useState([]);
   const [driversFromDB, setDriversFromDB] = useState([]);
-  const [isSelected, setIsSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState(false);
   const [buttonClick, setButton] = useState(0);
   const { setErrMessage } = useContext(AuthContext);
 
@@ -30,12 +30,12 @@ export default function AdminShowOrder() {
   };
 
   const handleSelect = (e) => {
-    const selected = e.target.value
-     if (selected) {
-       setIsSelected(true)
-     } else {
-       setIsSelected(false)
-     }
+    const selected = e.target.value;
+    if (selected) {
+      setIsSelected(true);
+    } else {
+      setIsSelected(false);
+    }
   };
 
   const handleSubmit = (orderId) => {
@@ -47,7 +47,7 @@ export default function AdminShowOrder() {
         headers: { Authorization: `Bearer ${storedToken}` }
       }
     );
-    setButton(true);
+    setButton(buttonClick + 1);
   };
 
   const driversName = [...driversFromDB].map((driver) => {
@@ -62,6 +62,7 @@ export default function AdminShowOrder() {
     .filter((order) => !order?.driverId)
     .map((order) => {
       const { _id, address } = order;
+
       return (
         <tr key={_id}>
           <td>{_id.slice(-5)}</td>
@@ -78,7 +79,7 @@ export default function AdminShowOrder() {
             <button
               id="assign-button"
               type="submit"
-              style={{ display: visible }}
+              style={{display: visible}}
               onClick={() => handleSubmit(_id)}
             >
               Assign
@@ -98,9 +99,9 @@ export default function AdminShowOrder() {
 
   if (orderFromDB.length === 0) return <></>;
   return (
-    <div>
+    <div className="center-div">
       <h2>Unassigned Orders</h2>
-      <table className='driver-table'>
+      <table className="driver-table">
         <thead>
           <tr>
             <th>Order Id</th>

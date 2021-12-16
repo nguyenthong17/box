@@ -26,7 +26,7 @@ export default function CreateDriver() {
   }
 
   return (
-    <div className='create-driver'>
+    <div className='signup'>
       <form onSubmit={handleSubmit}>
         <label>
           Username

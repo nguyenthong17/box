@@ -25,6 +25,7 @@ import AdminSignup from "./pages/admin/AdminSignup";
 import CreateOrder from "./pages/customer/CreateOrder";
 import EditOrder from "./pages/customer/EditOrder";
 import ShowOrder from "./pages/customer/ShowOrder";
+import Delivery from "./pages/driver/Delivery";
 
 function App() {
   return (
@@ -87,6 +88,14 @@ function App() {
           element={
             <DriverRoute redirectTo={"/"}>
               <DriverHomepage />
+            </DriverRoute>
+          }
+        />
+        <Route 
+          path='/driver/delivery'
+          element={
+            <DriverRoute redirectTo={"/"}>
+              <Delivery />
             </DriverRoute>
           }
         />

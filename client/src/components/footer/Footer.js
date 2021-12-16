@@ -10,8 +10,8 @@ export default function Footer() {
     <div className="container footer d-flex">
       <p className='col align-self-center'>&copy; box</p>
       {!isLoggedIn && (
-        <Link to="/admin/login">
-          <p>Log in as admin</p>
+        <Link to="/admin/login" className="navbar-link">
+          <p >Log in as admin</p>
         </Link>
       )}
     </div>

@@ -1,47 +1,57 @@
-import React,{useState, useContext} from 'react'
-import { AuthContext } from '../../context/auth'
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../context/auth";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function AdminLogIn() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  
-  
-  const navigate = useNavigate()
-  const {loginUser, setErrMessage} = useContext(AuthContext)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleUsername = e => setUsername(e.target.value)
-  const handlePassword = e => setPassword(e.target.value)
+  const navigate = useNavigate();
+  const { loginUser, setErrMessage } = useContext(AuthContext);
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const requestBody = {username, password}
-    axios.post('/login/admin', requestBody)
-        .then (res => {
-          const token = res.data.authToken
+  const handleUsername = (e) => setUsername(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
 
-          loginUser(token)
-          navigate('/admin')
-        })
-        .catch(err => {
-          setErrMessage(err.response.data.message)
-        })
-  }
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = { username, password };
+    axios
+      .post("/login/admin", requestBody)
+      .then((res) => {
+        const token = res.data.authToken;
+
+        loginUser(token);
+        navigate("/admin");
+      })
+      .catch((err) => {
+        setErrMessage(err.response.data.message);
+      });
+  };
+
   return (
-    <div className='admin-login'>
+    <div className="signup center-div">
       <form onSubmit={handleSubmit}>
-        <label >
+        <label>
           Username
-          <input type="text" value={username} placeholder='Username' onChange={handleUsername}/>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={handleUsername}
+          />
         </label>
         <label>
           Password
-          <input type="password" value={password} placeholder='Password' onChange={handlePassword}/>
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={handlePassword}
+          />
         </label>
-        <button>Submit</button>
+        <button>Login</button>
       </form>
     </div>
-  )
+  );
 }
