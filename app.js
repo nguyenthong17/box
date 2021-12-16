@@ -19,8 +19,6 @@ require("./config")(app);
 
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controlled from the routes/index.js
-// const allRoutes = require("./routes");
-// app.use("/api", allRoutes);
 
 const cusSignup = require('./routes/customerSignup')
 app.use('/signup', cusSignup)
@@ -33,6 +31,9 @@ app.use('/login', loginRoutes)
 
 const adminRoutes = require("./routes/admin");
 app.use("/admin", isAuthenticated, adminRoutes);
+
+const customerRoute = require('./routes/customer')
+app.use('/customer', customerRoute) //need to protect the link after development❗❗❗❗❗
 
 const path = require('path');
 app.use(express.static(path.join(__dirname, "/client/build")));

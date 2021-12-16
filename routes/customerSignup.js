@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Customer = require('../models/Customer')
+const Admin = require('../models/Admin')
 const bcrypt = require('bcrypt')
 const {isEmpty, is8Chars, hasSpace} = require('../middleware/inputValidation')
 
@@ -42,6 +43,18 @@ router.post("/customer", (req, res, next) => {
             }).then(result => res.status(200).json({message: 'created'}))
             .catch(err => res.status(500).json({message:'Internal Server Error'}));
           })
+});
+
+router.post("/admin", (req, res, next) => {
+  const { username, password, firstName, lastName } = req.body;
+  const salt = bcrypt.genSaltSync(saltRound);
+  const hashedPassword = bcrypt.hashSync(password, salt);
+  Admin.create({
+    username,
+    password: hashedPassword,
+    firstName,
+    lastName
+  }).then((createdAdmin) => res.json(createdAdmin));
 });
 
 module.exports = router;

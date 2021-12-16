@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Homepage() {
   return (
-    <div>
-      <h1>Welcome to box</h1>
-    </div>
+    
+      <h1 className=''>Welcome to box</h1>
+    
   )
 }

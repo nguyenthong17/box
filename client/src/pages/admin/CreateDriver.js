@@ -9,7 +9,7 @@ export default function CreateDriver() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
 
-  const {setErrMessage} = useContext(AuthContext)
+  const {headers, setErrMessage} = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -18,9 +18,7 @@ export default function CreateDriver() {
 
     const requestBody = {username, password, firstName, lastName}
 
-    const storedToken = localStorage.getItem('authToken')
-
-    axios.post('/admin/driver', requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
+    axios.post('/admin/driver', requestBody, {headers})
         .then(response => navigate('/admin/driver'))
         .catch(err =>{
           setErrMessage(err.response.data.message)

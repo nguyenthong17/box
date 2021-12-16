@@ -16,9 +16,9 @@ import NavbarCustomer from './NavbarCustomer'
 export default function NavTemplate() {
   const {isLoggedIn, user} = useContext(AuthContext)
   return (
-    <Container className='d-flex'>
+    <Container className='navbar d-flex'>
       <Link to='/'>
-        <img className='.logo' src='/logo.png' alt="Logo" height='50px'/>
+        <img className='.logo col align-self-start' src='/logo.png' alt="Logo" height='50px'/>
       </Link>
 
       <Navbar className='navbar-link col-11'>  

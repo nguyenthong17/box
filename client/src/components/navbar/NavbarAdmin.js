@@ -9,7 +9,7 @@ export default function NavbarAdmin() {
     <Nav>
       <NavDropdown title='Driver'>
         <NavDropdown.Item>
-          <Link  to='/admin/driver/create'>Create</Link>
+          <Link  to='/admin/driver/create'>Create driver</Link>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <Link to='/admin/driver'>List all driver</Link>

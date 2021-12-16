@@ -10,7 +10,7 @@ function AuthProviderWrapper (props) {
   const [isLoading, setIsLoading] = useState(true)
   const [errMessage, setErrMessage] = useState(null)
   const [headers, setHeaders] = useState(null)
-
+  
   const loginUser = (token) => {
     localStorage.setItem('authToken', token)
     verifyToken()
@@ -22,9 +22,16 @@ function AuthProviderWrapper (props) {
     setUser(null)
   }
 
+  const getHeaders = token => {
+    return {authorization: `Bearer ${token}`}
+  }
+
   const verifyToken = () => {
     const storedToken = localStorage.getItem('authToken')
-    setHeaders({Authorization: `Bearer ${storedToken}`})
+    
+    const headersToken = getHeaders(storedToken)
+    setHeaders(headersToken)
+    
     if (storedToken) {
       axios.get('/auth/verify', {headers: {Authorization: `Bearer ${storedToken}`}})
           .then ( response => {
@@ -54,7 +61,8 @@ function AuthProviderWrapper (props) {
                                   errMessage, 
                                   loginUser, 
                                   setErrMessage, 
-                                  logoutUser}}>
+                                  logoutUser,
+                                  headers}}>
       {props.children}
     </AuthContext.Provider>
   )
